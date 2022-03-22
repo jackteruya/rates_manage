@@ -26,7 +26,7 @@
     - $ sudo systemctl status redis (verificar se esta ativo)
     - $ sudo systemctl start redis (para ativar ativar, caso não estiver ativo)
     - $ celery -A quote_management worker --loglevel=INFO  (rodar as tarefas)
-    - $ celery -A tarefa flower --address=127.0.0.1 --port=5566 --basic_auth==admin:1234 (interface grafica para ver as tarefas)
+    - $ celery -A quote_management flower --address=127.0.0.1 --port=5566 --basic_auth==admin:1234 (interface grafica para ver as tarefas)
     - $ celery -A quote_management beat --loglevel=INFOC (rodar as tarefas agendadas)
 
 
