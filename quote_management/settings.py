@@ -82,12 +82,12 @@ WSGI_APPLICATION = 'quote_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Caso queira rodar no banco postgress
 # DATABASES = {
@@ -101,10 +101,10 @@ WSGI_APPLICATION = 'quote_management.wsgi.application'
 #     }
 # }
 
-# Para deploy no heroku
-DATABASES = {
-    'default': dj_database_url.config()
-}
+# # Para deploy no heroku
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 
 # Password validation
