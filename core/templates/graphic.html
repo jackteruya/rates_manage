@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style src="{% static 'syle.css' %}"></style>
+</head>
+<body>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+<div style="margin-right: 20%">
+    <div style="margin-left: 10%">
+        <form>
+            <div>
+                <label>Data Final</label>
+                <input name="date" type="date" {%if date_select %} value="{{date_select}}" {% endif %}>
+            </div>
+            <div>
+                <label>Moeda</label>
+                <select name="coin">
+                    {% for coin in coins %}
+                    <option value="{{ coin.id }}" {% if coin.id == coin_select.id %}selected{%endif%}>{{ coin.sigla }}</option>
+                    {% endfor %}
+            </select>
+            </div>
+            <div>
+                <label>Dias de visualização</label>
+                <select name="days_view">
+                <option value="5" {% if days_view == 5 %}selected{%endif%}>5</option>
+                <option value="10" {% if days_view == 10 %}selected{%endif%}>10</option>
+                <option value="15" {% if days_view == 15 %}selected{%endif%}>15</option>
+                <option value="30" {% if days_view == 30 %}selected{%endif%}>30</option>
+            </select>
+            </div>
+
+
+            <button class="form-checl" type="submit">Ir</button>
+        </form>
+    </div>
+
+    <figure class="highcharts-figure" style="margin: 10%">
+        <div id="container"></div>
+
+
+    </figure>
+</div>
+
+<script>
+    var dataQuote = {{data_quote}};
+    var coin = "{{coin_select}}";
+    var date_quote = "{{date_select|slice:'-2:'}}";
+    var days_view = "{{days_view}}";
+    var dataCategories = {{data_days}};
+    // var point_start = ;
+
+    if (days_view===5) {
+        var dateQuote = date_quote-4;
+    } else if (days_view==="10") {
+        var dateQuote = date_quote-9;
+    } else if (days_view==="15") {
+        var dateQuote = date_quote-14;
+    } else if (days_view==="30") {
+        var dateQuote = date_quote-29;
+    } else {
+         var dateQuote = date_quote-4;
+    };
+
+
+
+</script>
+<script src="{% static 'mais.js' %}"></script>
+
+</body>
+</html>
