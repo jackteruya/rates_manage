@@ -31,3 +31,7 @@
 
 
 
+heroku deploy -> https://rates-manage.herokuapp.com/
+
+
+
