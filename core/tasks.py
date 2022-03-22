@@ -35,14 +35,18 @@ def some_task():
     year = date.year
     month = date.month
     day = date.day
+
     for coin in coins:
+        get_coin = Coin.objects.get(sigla=coin)
         service = ServiceUpdateCoin(coin=coin, date=f'{year}-{month}-{day}')
         response = service.get_response()
-        data = {'date_rate': f'{year}-{month}-{day}', 'rate_base': 'USD'}
-        get_coin = Coin.objects.get(sigla=coin)
-        data['coin'] = get_coin.id
-        data['value'] = round(response['rate'], 7)
+        data = {
+            'date_rate': response['date'],
+            'rate_base': 'USD',
+            'coin': get_coin.id,
+            'value': round(response['rate'], 7)
+        }
+
         serializer = RatesSerializers(data=data)
         serializer.is_valid()
         serializer.save()
-
