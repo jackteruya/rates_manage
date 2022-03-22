@@ -89,21 +89,21 @@ WSGI_APPLICATION = 'quote_management.wsgi.application'
 # }
 
 # Caso queira rodar no banco postgress
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rates',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5454'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'rates',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': '5454'
+#     }
+# }
 
 # Para deploy no heroku
-# DATABASES = {
-#     'default': dj_database_url.config()
-# }
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 
 # Password validation
@@ -168,7 +168,7 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-CELERY_BROKER_URL = 'REDIS://127.0.0.1:6379/0'
+CELERY_BROKER_URL = config('REDIS_URI', default='REDIS://127.0.0.1:6379/0')
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
