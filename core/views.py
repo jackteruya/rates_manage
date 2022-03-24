@@ -1,9 +1,13 @@
 import datetime
 
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from core.models import Rates, Coin
 from core.tasks import some_task
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 class GraphicView(ListView):

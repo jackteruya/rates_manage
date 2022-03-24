@@ -3,14 +3,15 @@ from rest_framework.serializers import ModelSerializer
 from core.models import Rates, Coin
 
 
-# class CoinSerialisers(ModelSerializer):
-#
-#     class Meta:
-#         model = Coin
-#         fields = (
-#             'sigla',
-#         )
-#
+class CoinsSerializers(ModelSerializer):
+
+    class Meta:
+        model = Coin
+        fields = (
+            'sigla',
+            'name'
+        )
+
 
 class RatesSerializers(ModelSerializer):
 

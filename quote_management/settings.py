@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_celery_results',
+    'django_celery_beat',
 
     'core',
 ]
@@ -165,7 +166,7 @@ API_VATCOMPLY = "https://api.vatcomply.com/rates"
 CELERY_BEAT_SCHEDULE = {
     'consulta-api': {
         'task': 'core.tasks.some_task',
-        'schedule': crontab(hour=22),
+        'schedule': crontab(hour=20),
     },
 }
 
